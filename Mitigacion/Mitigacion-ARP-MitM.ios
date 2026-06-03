@@ -1,0 +1,13 @@
+!!!!!!!!!!!!!!!! Mitigacion de ARP MitM (Dynamic ARP Inspection)
+en
+conf term
+!!!! Habilitar DAI en VLAN1
+ip arp inspection vlan 1
+
+!!!! Marcar puerto trunk como trusted (SW1 <-> SW2)
+interface GigabitEthernet0/0
+ip arp inspection trust
+exit
+
+!!!! El puerto del atacante queda untrusted por defecto
+do wr
